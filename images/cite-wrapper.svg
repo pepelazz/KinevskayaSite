@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="264px" height="49px" viewBox="0 0 264 49" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.0.4 (8054) - http://www.bohemiancoding.com/sketch -->
+    <title>Rectangle 5 + Когда дорога превращ + Path 1</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="header" sketch:type="MSLayerGroup" transform="translate(-258.000000, -17.000000)">
+            <g id="Rectangle-5-+-Когда-дорога-превращ-+-Path-1" transform="translate(258.000000, 17.000000)">
+                <path d="M30.9565217,31 L5.99423194,31 C2.67727042,31 0,28.3157319 0,25.0045193 L0,5.99548069 C0,2.68333093 2.68370905,0 5.99423194,0 L258.005768,0 C261.32273,0 264,2.68426814 264,5.99548069 L264,25.0045193 C264,28.3166691 261.316291,31 258.005768,31 L56,31 L20,49 L30.9565217,31 Z" id="Rectangle-5" fill="#0AA2B2" sketch:type="MSShapeGroup"></path>
+                <text id="Когда-дорога-превращ" sketch:type="MSTextLayer" font-family="Arial Narrow" font-size="18" font-weight="normal" fill="#FFFFFF">
+                    <tspan x="10" y="21">Когда дорога превращается в Путь! </tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>
