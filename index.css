@@ -59,7 +59,7 @@ header .row1 .position {
 }
 /* line 34, ../app/style/partials/_style.sass */
 header .row1 .phone {
-  margin-right: 6rem;
+  margin-right: 3rem;
   font-weight: normal;
 }
 @media (min-width: 600px) {
