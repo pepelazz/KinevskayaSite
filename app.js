@@ -4,10 +4,10 @@
   module = angular.module('app', []);
 
   module.controller('main', [
-    '$rootScope', '$scope', '$http', '$location', '$timeout', (function($rootScope, $scope, $http, $location, $timeout) {
+    '$rootScope', '$scope', '$http', '$location', '$timeout', '$log', (function($rootScope, $scope, $http, $location, $timeout, $log) {
       var fixFooter;
       fixFooter = (function() {
-        if (($('header').height() + $('.main-area').height() + $('.footer').height()) < $(window).height()) {
+        if (($('header').innerHeight() + $('.main-area').innerHeight() + $('.footer').innerHeight()) < $(window).innerHeight()) {
           $('.footer').addClass('sticky');
         }
       });
@@ -18,6 +18,38 @@
       $rootScope.fixFooter = fixFooter;
       $scope.modal = {
         isShown: false
+      };
+      $scope.request = {
+        name: null,
+        phone: null,
+        send: (function() {
+          $scope.modal.isShown = false;
+          $.ajax({
+            method: 'POST',
+            url: "https://mandrillapp.com/api/1.0/messages/send.json",
+            data: {
+              key: 'XrhYSIo5ZAQ6Dcbp5ItPDA',
+              message: {
+                from_email: 'pepelazz00@gmail.com',
+                to: [
+                  {
+                    email: 'markovmail@gmail.com',
+                    name: 'alex',
+                    type: 'to'
+                  }
+                ]
+              },
+              subject: 'test email',
+              html: '<p>Example HTML content</p>',
+              text: 'example content'
+            }
+          }).done((function(data) {
+            $log.info(data);
+          })).fail((function() {
+            $log.error('server not respond');
+          }));
+          return false;
+        })
       };
     })
   ]);

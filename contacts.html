@@ -94,13 +94,13 @@
     <div id="modal" ng-class="{show : modal.isShown}">
       <div class="name">
         <!--span.input-title Имя-->
-        <input placeholder="Имя">
+        <input placeholder="Имя" ng-model="request.name">
       </div>
       <div class="phone">
         <!--span.input-title Телефон-->
-        <input placeholder="Телефон">
+        <input placeholder="Телефон" ng-model="request.phone">
       </div>
-      <div class="btn">Отправить</div>
+      <div ng-click="request.send()" class="btn">Отправить</div>
       <div ng-click="modal.isShown=false" class="close">X</div>
     </div>
   </body> <!-- Yandex.Metrika counter -->
