@@ -5,17 +5,6 @@
 
   module.controller('main', [
     '$rootScope', '$scope', '$http', '$location', '$timeout', '$log', (function($rootScope, $scope, $http, $location, $timeout, $log) {
-      var fixFooter;
-      fixFooter = (function() {
-        if (($('header').innerHeight() + $('.main-area').innerHeight() + $('.footer').innerHeight()) < $(window).innerHeight()) {
-          $('.footer').addClass('sticky');
-        }
-      });
-      fixFooter();
-      $(window).resize((function() {
-        fixFooter();
-      }));
-      $rootScope.fixFooter = fixFooter;
       $scope.modal = {
         isShown: false
       };
@@ -30,27 +19,47 @@
             data: {
               key: 'XrhYSIo5ZAQ6Dcbp5ItPDA',
               message: {
-                from_email: 'pepelazz00@gmail.com',
+                subject: 'Заявка с сайта kinevskaya.ru',
+                html: '<h2>Заявка с сайта kinevskaya.ru</h2><ul><li>' + $scope.request.name + '</li><li>' + $scope.request.phone + '</li></ul>',
+                text: 'Имя: ' + $scope.request.name + ', тел.: ' + $scope.request.phone,
+                from_email: 'info@kinevskaya.ru',
                 to: [
                   {
-                    email: 'markovmail@gmail.com',
-                    name: 'alex',
+                    email: 'petma17@gmail.com',
+                    name: 'Maria',
+                    type: 'to'
+                  }, {
+                    email: 'pepelazz00@gmail.com',
+                    name: 'admin',
                     type: 'to'
                   }
                 ]
-              },
-              subject: 'test email',
-              html: '<p>Example HTML content</p>',
-              text: 'example content'
+              }
             }
           }).done((function(data) {
             $log.info(data);
           })).fail((function() {
             $log.error('server not respond');
           }));
+          $scope.request.name = null;
+          $scope.request.phone = null;
           return false;
         })
       };
+      $scope.getContent = (function() {
+        $.ajax({
+          method: 'POST',
+          url: "https://mandrillapp.com/api/1.0/messages/content.json",
+          data: {
+            key: 'XrhYSIo5ZAQ6Dcbp5ItPDA',
+            id: 'a5747fc40c334736933c17ac8c9dffc6'
+          }
+        }).done((function(data) {
+          $log.info(data);
+        })).fail((function() {
+          $log.error('server not respond');
+        }));
+      });
     })
   ]);
 
@@ -64,7 +73,6 @@
             var width;
             width = $(window).width();
             $(element).css('height', 500).css('width', width);
-            $rootScope.fixFooter();
           };
           fixContentHeight();
           $(window).resize(function() {
