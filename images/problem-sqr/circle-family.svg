@@ -5,10 +5,10 @@
     <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-        <g id="square" sketch:type="MSLayerGroup" transform="translate(-306.000000, -306.000000)">
-            <g id="Group" transform="translate(41.000000, 69.000000)" sketch:type="MSShapeGroup">
+        <g id="square" sketch:type="MSLayerGroup" transform="translate(-306.000000, -321.000000)">
+            <g id="Group" transform="translate(41.000000, 84.000000)" sketch:type="MSShapeGroup">
                 <g id="family" transform="translate(265.000000, 237.000000)">
-                    <circle id="Oval-6" fill="#865E5E" cx="50" cy="50" r="50"></circle>
+                    <circle id="Oval-6" fill="#7C77B9" cx="50" cy="50" r="50"></circle>
                     <g id="Group" transform="translate(22.580645, 16.666667)" fill="#FFFFFF">
                         <ellipse id="Oval" cx="18.1080645" cy="6.81774194" rx="6.81774194" ry="6.81774194"></ellipse>
                         <ellipse id="Oval" cx="35.85" cy="6.81774194" rx="6.81774194" ry="6.81774194"></ellipse>
