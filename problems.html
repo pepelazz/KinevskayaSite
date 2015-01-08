@@ -53,24 +53,72 @@
               </li>
               <li> РЕШЕНИЯ
                 <ul>
-                  <li class="active"><a href="./seminars.html">Семинары</a></li>
+                  <li><a href="./seminars.html">Семинары</a></li>
                   <li><a href="./trainings.html">Тренинги</a></li>
                   <li><a href="./psychoanalysis.html">Индивидуальная работа</a></li>
                 </ul>
               </li>
             </ul>
           </div>
-          <div class="photo-grid seminars">
-            <div class="col1"><a href="http://icievolution.com/training/3" target="_blank"><img src="./images/seminars/dreams.jpg">
-                <div class="seminar-title">Сновидения</div></a></div>
-            <div class="col1"><a href="http://icievolution.com/training/7" target="_blank"><img src="./images/seminars/relationship-money.jpg">
-                <div class="seminar-title">Отношения и деньги</div></a></div>
-            <div class="col1"><a href="http://icievolution.com/training/19" target="_blank"><img src="./images/seminars/i-am-woman.jpg">
-                <div class="seminar-title">Я Женщина. Пробуждение</div></a></div>
-            <div class="col1"><a href="http://icievolution.com/training/20" target="_blank"><img src="./images/seminars/psyho-without-diplom.jpg">
-                <div class="seminar-title">Психология без диплома</div></a></div>
-            <div class="col1"><a href="http://icievolution.com/training/4" target="_blank"><img src="./images/seminars/relations.jpg">
-                <div class="seminar-title">Отношения - интимность, сексуальность, ответственность</div></a></div>
+          <div ng-controller="problemSqr" class="problem-square">
+            <div class="wrapper">
+              <div ng-repeat="problem in problems" my-shake id="{{problem.name}}" problem-circle="{{$index}}" class="problem-circle"><img ng-src="./images/problem-sqr/circle-{{problem.name}}.svg" ng-click="problemsSqr.zoomInProblem($index); $event.stopPropagation()"></div>
+              <div id="circle-bg"></div>
+              <div id="problem-title">ПРОБЛЕМЫ</div>
+              <div id="problem-title-detail"></div>
+              <div ng-click="problemsSqr.zoomOutProblem()" id="back-to-problem"><img src="./images/problem-sqr/arrow-back.svg"><span>ОБРАТНО</span></div>
+              <div id="sign-work">РАБОТА</div>
+              <div id="sign-emotions">ЭМОЦИИ</div>
+              <div id="sign-health">ЗДОРОВЬЕ</div>
+              <div id="sign-family">СЕМЬЯ</div>
+              <div ng-repeat="problem in problems" ng-show="problem.isSelected" class="problem-sections">
+                <ul>
+                  <li ng-repeat="section in problem.sections" ng-class-even="'even'" ng-click="problemsSqr.showArticle($parent.$index, $index)">{{section}}</li>
+                </ul>
+              </div>
+              <div class="problem-articles">
+                <div ng-show="problemsSqr.selectedName.problem == 0 &amp;&amp; problemsSqr.selectedName.article == 0">
+                  <div class="article-text">
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae neque id nunc ullamcorper convallis a vel turpis.
+                      Pellentesque in egestas est. Vestibulum nisl neque, imperdiet ac maximus eget, pretium non quam. Mauris ultricies lectus quis
+                      risus vulputate, eget iaculis risus iaculis. Vivamus non neque luctus, tincidunt elit ut, accumsan leo.
+                      Donec efficitur tincidunt mauris ac scelerisque. In id metus magna.
+                    </p>
+                    <p>
+                      Quisque sit amet nisl dui. Aliquam at mauris posuere enim efficitur malesuada. Suspendisse vitae placerat est, vitae
+                      feugiat lorem. Maecenas vitae tellus at mi feugiat pretium. Sed id lectus ultrices, molestie libero vitae, condimentum enim.
+                      Pellentesque id commodo nulla, eget molestie diam. Donec mattis sagittis luctus. Pellentesque eu risus eu ex faucibus commodo
+                      eu sed quam. Donec vitae lectus mollis, condimentum nibh id, bibendum elit. Nullam ullamcorper et erat nec sollicitudin.
+                      Praesent vel orci nisl.
+                    </p>
+                  </div>
+                  <div class="article-img"><img src="./images/problem-sqr/work-burn.jpg"></div>
+                </div>
+                <div ng-show="problemsSqr.selectedName.problem == 0 &amp;&amp; problemsSqr.selectedName.article == 1">
+                  <div class="article-text">
+                    <p>
+                      Pellentesque facilisis ullamcorper sollicitudin. Aenean et augue dictum, tempor sem et, feugiat lacus. Mauris eu ultrices arcu.
+                      Aliquam accumsan tellus nulla, et semper libero consequat sit amet. Suspendisse potenti. Etiam euismod felis gravida quam
+                      condimentum finibus. Nullam semper feugiat mi, id vehicula nisi auctor ut. Morbi sodales, tellus ac eleifend vulputate, purus
+                      velit aliquam arcu, vel cursus nisl elit ac ligula. Aenean consectetur facilisis mauris quis dignissim. Nunc faucibus dignissim
+                      quam, commodo euismod ante consectetur convallis. In dolor elit, varius at turpis blandit, rhoncus elementum ligula.
+                      Quisque maximus libero libero, laoreet venenatis leo feugiat in. Morbi interdum velit nibh, nec eleifend neque laoreet eget.
+                      Integer mollis aliquet sem, tristique blandit elit rutrum nec. Ut tempus ipsum vitae ipsum pellentesque accumsan.
+                      Maecenas sed augue feugiat, semper tellus eu, feugiat elit.
+                    </p>
+                  </div>
+                  <div class="article-img"><img src="./images/problem-sqr/work-choice.jpg"></div>
+                </div>
+                <div ng-show="problemsSqr.selectedName.problem == 0 &amp;&amp; problemsSqr.selectedName.article == 2">
+                  <div class="article-text">
+                    <p>Suspendisse eleifend tempus egestas. Duis suscipit viverra congue. Pellentesque rhoncus, tellus tincidunt finibus imperdiet, sapien ex dapibus neque, quis sagittis nulla ex in odio. Cras pulvinar magna leo, eu egestas velit interdum non. In luctus tortor nec tellus viverra, in gravida augue faucibus. Aenean eget convallis lorem. Curabitur iaculis porta facilisis. Nulla tempus feugiat pellentesque. Nulla lacinia nisi sed ligula tincidunt rhoncus. Integer eget luctus nibh. Fusce lobortis bibendum augue ac congue. Phasellus eu enim sed orci consequat mollis. Nullam at venenatis diam. Cras finibus diam augue, ut facilisis nibh bibendum ut. Suspendisse tristique odio in elit pharetra, ac blandit lorem sagittis. Vestibulum hendrerit posuere ante, a maximus arcu congue nec.</p>
+                    <p>Duis vel purus orci. Praesent id volutpat lectus. Nam a posuere elit, eu egestas nisl. Nam risus metus, ullamcorper sed blandit sed, euismod eu mi. Pellentesque libero turpis, placerat nec eros non, lacinia viverra nisl. Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque non interdum sem, ac euismod felis. Nam venenatis, neque eu lobortis luctus, nunc sem ultricies turpis, id viverra lectus mi vitae felis. Phasellus venenatis odio convallis urna condimentum malesuada eget eget velit. Curabitur ultricies, velit sit amet commodo iaculis, ipsum risus lobortis ex, quis consequat eros massa et sapien. Mauris sed nisl a mauris fringilla dignissim vitae in enim.</p>
+                  </div>
+                  <div class="article-img"><img src="./images/problem-sqr/work-conflict.jpg"></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
