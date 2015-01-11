@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="51px" height="51px" viewBox="0 0 51 51" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.0.4 (8054) - http://www.bohemiancoding.com/sketch -->
+    <title>Rectangle 3 + approve3</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Rectangle-3-+-approve3" sketch:type="MSLayerGroup">
+            <rect id="Rectangle-3" fill="#1CA9BE" sketch:type="MSShapeGroup" x="0" y="0" width="51" height="51" rx="40"></rect>
+            <g id="approve3" transform="translate(10.000000, 14.000000)" fill="#FFFFFF" sketch:type="MSShapeGroup">
+                <path d="M29.049,1.566 L28.19,0.708 C27.247,-0.237 25.702,-0.237 24.756,0.708 L10.172,15.294 L4.997,10.121 C4.054,9.177 2.508,9.177 1.565,10.122 L0.707,10.979 C-0.236,11.923 -0.236,13.468 0.707,14.412 L8.451,22.164 C9.395,23.107 10.94,23.107 11.884,22.164 L29.049,4.999 C29.991,4.055 29.991,2.51 29.049,1.566 L29.049,1.566 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>
