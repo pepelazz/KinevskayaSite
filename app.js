@@ -97,7 +97,7 @@ module.controller('main', [
 
 
 },{}],"/Users/Trikster/static_sites/Kinavskaya/_Kinevskaya/src/javascript/problem-sqr.coffee":[function(require,module,exports){
-var module;
+var calcArticleHeight, module;
 
 module = angular.module('problemSqr', []);
 
@@ -176,6 +176,7 @@ module.controller('problemSqr', [
           problem: problemIndex,
           article: articleIndex
         };
+        calcArticleHeight();
       })
     };
     ({
@@ -257,6 +258,22 @@ module.directive('problemCircle', [
     };
   })
 ]);
+
+calcArticleHeight = (function() {
+  var articles;
+  articles = $('.article-text', '.problem-articles');
+  setTimeout(function() {
+    return articles.each(function(i) {
+      var articleHeight;
+      articleHeight = $(articles[i]).height();
+      if (articleHeight > 0) {
+        return $('.problem-square').css({
+          height: articleHeight + $('.problem-articles').offset().top - $('.problem-square').offset().top
+        });
+      }
+    });
+  }, 100);
+});
 
 
 
