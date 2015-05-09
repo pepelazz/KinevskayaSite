@@ -42,6 +42,7 @@ module.controller('main', [
     $scope.request = {
       name: null,
       phone: null,
+      email: null,
       send: (function() {
         $scope.modal.isShown = false;
         $.ajax({
@@ -51,8 +52,8 @@ module.controller('main', [
             key: 'XrhYSIo5ZAQ6Dcbp5ItPDA',
             message: {
               subject: 'Заявка с сайта kinevskaya.ru',
-              html: '<h2>Заявка с сайта kinevskaya.ru</h2><ul><li>' + $scope.request.name + '</li><li>' + $scope.request.phone + '</li></ul>',
-              text: 'Имя: ' + $scope.request.name + ', тел.: ' + $scope.request.phone,
+              html: '<h2>Заявка с сайта kinevskaya.ru</h2><ul><li>' + $scope.request.name + '</li><li>' + $scope.request.phone + '</li><li>' + $scope.request.email + '</li></ul>',
+              text: 'Имя: ' + $scope.request.name + ', тел.: ' + $scope.request.phone + ', email.: ' + $scope.request.email,
               from_email: 'info@kinevskaya.ru',
               to: [
                 {
@@ -74,6 +75,7 @@ module.controller('main', [
         }));
         $scope.request.name = null;
         $scope.request.phone = null;
+        $scope.request.email = null;
         return false;
       })
     };
