@@ -7,9 +7,11 @@ require('./problem-sqr');
 
 require('./choice-select');
 
+require('./google-calendar');
 
 
-},{"./choice-select":"/Users/Trikster/static_sites/Kinavskaya/_Kinevskaya/src/javascript/choice-select.coffee","./ng-app":"/Users/Trikster/static_sites/Kinavskaya/_Kinevskaya/src/javascript/ng-app.coffee","./problem-sqr":"/Users/Trikster/static_sites/Kinavskaya/_Kinevskaya/src/javascript/problem-sqr.coffee","./yandex-map":"/Users/Trikster/static_sites/Kinavskaya/_Kinevskaya/src/javascript/yandex-map.coffee"}],"/Users/Trikster/static_sites/Kinavskaya/_Kinevskaya/src/javascript/choice-select.coffee":[function(require,module,exports){
+
+},{"./choice-select":"/Users/Trikster/static_sites/Kinavskaya/_Kinevskaya/src/javascript/choice-select.coffee","./google-calendar":"/Users/Trikster/static_sites/Kinavskaya/_Kinevskaya/src/javascript/google-calendar.coffee","./ng-app":"/Users/Trikster/static_sites/Kinavskaya/_Kinevskaya/src/javascript/ng-app.coffee","./problem-sqr":"/Users/Trikster/static_sites/Kinavskaya/_Kinevskaya/src/javascript/problem-sqr.coffee","./yandex-map":"/Users/Trikster/static_sites/Kinavskaya/_Kinevskaya/src/javascript/yandex-map.coffee"}],"/Users/Trikster/static_sites/Kinavskaya/_Kinevskaya/src/javascript/choice-select.coffee":[function(require,module,exports){
 var module;
 
 module = angular.module('choiceSelect', []);
@@ -29,10 +31,98 @@ module.controller('choiceSelect', [
 
 
 
+},{}],"/Users/Trikster/static_sites/Kinavskaya/_Kinevskaya/src/javascript/google-calendar.coffee":[function(require,module,exports){
+var module;
+
+module = angular.module('googleCalendar', []);
+
+module.controller('googleCalendar', [
+  '$rootScope', '$scope', (function($rootScope, $scope) {
+    var CLIENT_ID, SCOPES, appendPre, handleAuthResult, listUpcomingEvents, loadCalendarApi;
+    $('#google-calendar').fullCalendar({
+      googleCalendarApiKey: 'AIzaSyCyur9308z8zKEcHSsDx826-uZtSHewDyQ',
+      events: 'd9mpcd4d3ateogbtjbehvmrt0c@group.calendar.google.com',
+      eventClick: (function(event) {
+        window.open(event.url, 'gcalevent', 'width=700,height=600');
+        return false;
+      }),
+      loading: (function(bool) {
+        $('#loading').toggle(bool);
+      })
+    });
+    CLIENT_ID = '343360916730-84v45b8ivuotp6n6f309f8q2gvv13vn1.apps.googleusercontent.com';
+    SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"];
+    $scope.checkAuth = (function() {
+      gapi.auth.authorize({
+        'client_id': CLIENT_ID,
+        'scope': SCOPES,
+        'immediate': true
+      }, handleAuthResult);
+    });
+    handleAuthResult = (function(authResult) {
+      if (authResult && !authResult.error) {
+        console.info('authResult', authResult);
+        loadCalendarApi();
+      } else {
+        console.error('authResult', authResult);
+      }
+    });
+    $scope.handleAuthClick = (function(event) {
+      gapi.auth.authorize({
+        client_id: CLIENT_ID,
+        scope: SCOPES,
+        immediate: false
+      }, handleAuthResult);
+      return false;
+    });
+    loadCalendarApi = (function() {
+      gapi.client.load('calendar', 'v3', listUpcomingEvents);
+    });
+    listUpcomingEvents = (function() {
+      var request;
+      request = gapi.client.calendar.events.list({
+        'calendarId': 'primary',
+        'timeMin': (new Date).toISOString(),
+        'showDeleted': false,
+        'singleEvents': true,
+        'maxResults': 10,
+        'orderBy': 'startTime'
+      });
+      request.execute((function(resp) {
+        var date, event, events, i;
+        events = resp.items;
+        appendPre('Upcoming events:');
+        if (events.length > 0) {
+          i = 0;
+          while (i < events.length) {
+            event = events[i];
+            date = event.start.dateTime;
+            if (!date) {
+              date = event.start.date;
+            }
+            appendPre(event.summary + ' (' + date + ')');
+            i++;
+          }
+        } else {
+          appendPre('No upcoming events found.');
+        }
+      }));
+    });
+    appendPre = (function(message) {
+      var pre, textContent;
+      pre = document.getElementById('output');
+      textContent = document.createTextNode(message + '\n');
+      pre.appendChild(textContent);
+    });
+  })
+]);
+
+
+
 },{}],"/Users/Trikster/static_sites/Kinavskaya/_Kinevskaya/src/javascript/ng-app.coffee":[function(require,module,exports){
 var module;
 
-module = angular.module('app', ['yandexMap', 'problemSqr', 'choiceSelect']);
+module = angular.module('app', ['yandexMap', 'problemSqr', 'choiceSelect', 'googleCalendar']);
 
 module.controller('main', [
   '$rootScope', '$scope', '$http', '$location', '$timeout', '$log', (function($rootScope, $scope, $http, $location, $timeout, $log) {
